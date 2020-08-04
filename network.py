@@ -19,6 +19,7 @@ def res_block(initial_input, num_filters=64):
     x = conv_block(x, num_filters, 4, (1, 1), act=False)  # 4 instead of 3 to avoid checkerboard artifacts
     return add([x, initial_input])
 
+
 # UpSampling block - using transposed convolution
 def up_block(x, upscale):
     x = tf.keras.layers.Conv2DTranspose(filters=64, kernel_size=4, strides=(upscale, upscale), padding='same')(x)
@@ -26,12 +27,14 @@ def up_block(x, upscale):
     x = BatchNormalization()(x)
     return Activation('relu')(x)
 
+
 # UpSampling block - using nearest neighbor interpolation
 def up_block2(x, upscale):
     x = tf.keras.layers.UpSampling2D(size=(upscale, upscale))(x)
     x = Conv2D(filters=64, kernel_size=4, padding='same')(x)  # 4 instead of 3 to avoid checkerboard artifacts
     x = BatchNormalization()(x)
     return Activation('relu')(x)
+
 
 # model
 def generator(input_size=(88,88,3), upscale=4, mode='NN'):

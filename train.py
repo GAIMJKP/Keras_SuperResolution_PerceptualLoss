@@ -92,7 +92,7 @@ if __name__ == '__main__':
         y_t = vgg_content(preproc_layer(y_true))
         y_p = vgg_content(preproc_layer(y_pred))
 
-        loss = keras.losses.mean_squared_error(y_t, y_p)
+        loss = tf.keras.losses.mean_squared_error(y_t, y_p)
         return loss
 
 
