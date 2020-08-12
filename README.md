@@ -27,7 +27,7 @@ Training was performed on a workstation with a 3.6GHz, 6-core processor with 64G
 ## Usage
 Activate the virtual environment (see requirements.txt) and simply run the code by e.g. <code>python train.py</code>
 ### Train
-```bash
+```shellscript
 usage: train.py [-h] [--init_epoch INIT_EPOCH] [--num_epoch NUM_EPOCH] [--batch_size BATCH_SIZE]
                 [--mode MODE] [--loss LOSS] [--upscale_factor UPSCALE_FACTOR] [--LR_input_size LR_INPUT_SIZE]
                 [--train_data_dir TRAIN_DATA_DIR] [--val_data_dir VAL_DATA_DIR] [--HR_folder HR_FOLDER] [--LR_folder LR_FOLDER]
