@@ -53,7 +53,6 @@ optional arguments:
 
 ### Inference
 ```shellscript
-
 usage: evaluate.py [-h] [--upscale_factor UPSCALE_FACTOR] [--mode MODE] [--loss LOSS] [--LR_input_size LR_INPUT_SIZE]
                    [--test_data_dir TEST_DATA_DIR] [--HR_folder HR_FOLDER] [--LR_folder LR_FOLDER]
                    [--load_weight_dir SAVE_WEIGHT_DIR] [--save_result_dir SAVE_RESULT_DIR] 
@@ -72,8 +71,13 @@ optional arguments:
 
 
 ## Results
+- Model 1 (Perceptual loss &  Transposed Conv)
 
+- Model 2 (Perceptual loss & NN interpolation)
 
+- Model 3 (MSE loss & Transposed Conv)
+
+- Model 4 (MSE loss & NN interpolation)
 
 
 
