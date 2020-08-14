@@ -71,6 +71,14 @@ optional arguments:
 
 
 ## Results
+
+|         |  Loss |  PSNR |  SSIM  | Training time per epoch |
+|:-------:|:-----:|:-----:|:------:|:-----------------------:|
+| Model 1 | 43.27 | 1.873 | 0.1076 |          1h 4m          |
+| Model 2 | 55.69 | 2.843 | 0.1432 |           59m           |
+| Model 3 |  0.33 | 4.924 | 0.2686 |           49m           |
+| Model 4 |  0.35 | 4.742 | 0.2627 |           45m           |
+
 - Model 1 (Perceptual loss &  Transposed Conv)
 <table>
   <tr>
@@ -86,10 +94,55 @@ optional arguments:
  </table>
 
 - Model 2 (Perceptual loss & NN interpolation)
+<table>
+  <tr>
+    <td>ground-truth HR</td>
+     <td>bicubic interpolation</td>
+     <td>generated SR</td>
+  </tr>
+  <tr>
+    <td valign="top"><img src="./images/original.png"></td>
+    <td valign="top"><img src="./images/bicubic.png"></td>
+    <td valign="top"><img src="./images/perceptual_model2.png"></td>
+  </tr>
+ </table>
 
 - Model 3 (MSE loss & Transposed Conv)
+<table>
+  <tr>
+    <td>ground-truth HR</td>
+     <td>bicubic interpolation</td>
+     <td>generated SR</td>
+  </tr>
+  <tr>
+    <td valign="top"><img src="./images/original.png"></td>
+    <td valign="top"><img src="./images/bicubic.png"></td>
+    <td valign="top"><img src="./images/perceptual_model3.png"></td>
+  </tr>
+ </table>
 
 - Model 4 (MSE loss & NN interpolation)
+<table>
+  <tr>
+    <td>ground-truth HR</td>
+     <td>bicubic interpolation</td>
+     <td>generated SR</td>
+  </tr>
+  <tr>
+    <td valign="top"><img src="./images/original.png"></td>
+    <td valign="top"><img src="./images/bicubic.png"></td>
+    <td valign="top"><img src="./images/perceptual_model4.png"></td>
+  </tr>
+ </table>
+
+
+## Discussion
+- A network optimized with perceptual loss acquires better perceptual quality even though it gives lower PSNR and SSIM ratio compared to the network that is optimized using MSE loss. This is in line with <i> " the goal of these experiments is not to achieve state-of-the-art PSNR or SSIM results, but instead to showcase the qualitative difference between models trained with per-pixel and feature reconstruction losses."</i> from the paper.
++ The following equation shows that higher PSNR value can be achieved by lowering the MSE loss:
+<img> tag: <img src="https://cdn.mathpix.com/snip/images/pCsrAydomg5QIkWnwmhzhuPMc7hjmPY1Jfd8_-wDX70.original.fullsize.png" /> So naturally thenetwork optimized with MSE loss will focus on achieving higher PSNR values. PSNR relies on low-level differences between the pixels and does not necessarily correspond to the perceptual quality of the image.
+
+- Transposed convolution is more likely to generate checkerboard artifacts. Results show that nearest neighbor interpolation can be a solution for the checkerboard artifact problem in this case.
+
 
 
 
