@@ -72,6 +72,18 @@ optional arguments:
 
 ## Results
 - Model 1 (Perceptual loss &  Transposed Conv)
+<table>
+  <tr>
+    <td>ground-truth HR</td>
+     <td>bicubic interpolation</td>
+     <td>generated SR</td>
+  </tr>
+  <tr>
+    <td valign="top"><img src="./images/original.png"></td>
+    <td valign="top"><img src="./images/bicubic.png"></td>
+    <td valign="top"><img src="./images/perceptual_model1.png"></td>
+  </tr>
+ </table>
 
 - Model 2 (Perceptual loss & NN interpolation)
 
