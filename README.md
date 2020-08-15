@@ -145,6 +145,8 @@ network optimized with MSE loss will focus on achieving higher PSNR values. PSNR
 
 - Transposed convolution is more likely to generate checkerboard artifacts. Results show that nearest neighbor interpolation can be a solution for the checkerboard artifact problem in this case.
 
+- By utilizing nearest neighbor interpolation as an upscaling method instead of transposed convolution which is proposed by the original paper, it was able to handle the checkerboard artifact problem. 
+
 - Uncertainty estimation for each neural network model can give us further understanding of the model such as the robustness of the model. Generated uncertainty maps and warning maps can be found [here](https://github.com/junnjun/Uncertainty-Estimation-for-Deep-Learning-based-SISR)
 
 
