@@ -62,7 +62,8 @@ optional arguments:
 --upscale_factor           upscale factor (default:x4)
 --mode                     upscaling method, two options: 'NN' for NN interpolation, 'TS' for transposed convolution
 --loss                     loss function, two options: 'perceptual' for perceptual loss, 'mse' for MSE loss
---train_data_dir           path to test dataset, must contain LR_folder and HR_folder
+--LR_input_size            if the size of the input low-resolution image is 88x88 then type in 88 (default:88)
+--test_data_dir           path to test dataset, must contain LR_folder and HR_folder
 --HR_folder                where low-resolution data are saved, specify the folder name
 --LR_folder                where high-resolution data are saved, specify the folder name
 --load_weight_dir          path to saved weight/checkpoint
@@ -139,7 +140,8 @@ optional arguments:
 ## Discussion
 - A network optimized with perceptual loss acquires better perceptual quality even though it gives lower PSNR and SSIM ratio compared to the network that is optimized using MSE loss. This is in line with <i> " the goal of these experiments is not to achieve state-of-the-art PSNR or SSIM results, but instead to showcase the qualitative difference between models trained with per-pixel and feature reconstruction losses."</i> from the paper.
 + The following equation shows that higher PSNR value can be achieved by lowering the MSE loss:
-<img> <img src="https://cdn.mathpix.com/snip/images/pCsrAydomg5QIkWnwmhzhuPMc7hjmPY1Jfd8_-wDX70.original.fullsize.png" /> So naturally thenetwork optimized with MSE loss will focus on achieving higher PSNR values. PSNR relies on low-level differences between the pixels and does not necessarily correspond to the perceptual quality of the image.
+<img> <img src="https://cdn.mathpix.com/snip/images/pCsrAydomg5QIkWnwmhzhuPMc7hjmPY1Jfd8_-wDX70.original.fullsize.png" /> So naturally the
+network optimized with MSE loss will focus on achieving higher PSNR values. PSNR relies on low-level differences between the pixels and does not necessarily correspond to the perceptual quality of the image.
 
 - Transposed convolution is more likely to generate checkerboard artifacts. Results show that nearest neighbor interpolation can be a solution for the checkerboard artifact problem in this case.
 
