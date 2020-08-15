@@ -63,7 +63,7 @@ optional arguments:
 --mode                     upscaling method, two options: 'NN' for NN interpolation, 'TS' for transposed convolution
 --loss                     loss function, two options: 'perceptual' for perceptual loss, 'mse' for MSE loss
 --LR_input_size            if the size of the input low-resolution image is 88x88 then type in 88 (default:88)
---test_data_dir           path to test dataset, must contain LR_folder and HR_folder
+--test_data_dir            path to test dataset, must contain LR_folder and HR_folder
 --HR_folder                where low-resolution data are saved, specify the folder name
 --LR_folder                where high-resolution data are saved, specify the folder name
 --load_weight_dir          path to saved weight/checkpoint
