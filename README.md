@@ -31,7 +31,7 @@ Activate the virtual environment (see requirements.txt) and simply run the code 
 usage: train.py [-h] [--init_epoch INIT_EPOCH] [--num_epoch NUM_EPOCH] [--batch_size BATCH_SIZE]
                 [--mode MODE] [--loss LOSS] [--upscale_factor UPSCALE_FACTOR] [--LR_input_size LR_INPUT_SIZE]
                 [--train_data_dir TRAIN_DATA_DIR] [--val_data_dir VAL_DATA_DIR] [--HR_folder HR_FOLDER] [--LR_folder LR_FOLDER]
-                [--load_weight_dir SAVE_WEIGHT_DIR] [--save_weight_dir SAVE_WEIGHT_DIR] [--log_dir LOG_DIR]
+                [--load_weight_dir LOAD_WEIGHT_DIR] [--save_weight_dir SAVE_WEIGHT_DIR] [--log_dir LOG_DIR]
 
 optional arguments:
 -h, --help                 for more help on parameters 
@@ -137,17 +137,38 @@ optional arguments:
  </table>
 
 
-## Discussion
-- A network optimized with perceptual loss acquires better perceptual quality even though it gives lower PSNR and SSIM ratio compared to the network that is optimized using MSE loss. This is in line with <i> " the goal of these experiments is not to achieve state-of-the-art PSNR or SSIM results, but instead to showcase the qualitative difference between models trained with per-pixel and feature reconstruction losses."</i> from the paper.
-+ The following equation shows that higher PSNR value can be achieved by lowering the MSE loss:
-<img> <img src="https://cdn.mathpix.com/snip/images/pCsrAydomg5QIkWnwmhzhuPMc7hjmPY1Jfd8_-wDX70.original.fullsize.png" /> So naturally the
-network optimized with MSE loss will focus on achieving higher PSNR values. PSNR relies on low-level differences between the pixels and does not necessarily correspond to the perceptual quality of the image.
+## Uncertainty maps and Warning map
 
-- Transposed convolution is more likely to generate checkerboard artifacts. Results show that nearest neighbor interpolation can be a solution for the checkerboard artifact problem in this case.
+|         | Intrinsic uncertainty | Parameter uncertainty | Warning map |
+|:-------:|:---------------------:|:---------------------:|:-----------:|
+| Model 1 |         17207         |         16299         |     0.24    |
+| Model 2 |         20727         |         16183         |     0.32    |
+| Model 3 |         11728         |         11873         |     0.03    |
+| Model 4 |         12082         |         12773         |     0.02    |
 
-- By utilizing nearest neighbor interpolation as an upscaling method instead of transposed convolution which is proposed by the original paper, it was able to handle the checkerboard artifact problem. 
+More details of uncertainty maps and warning map can be found [here](https://github.com/junnjun/Uncertainty-Estimation-for-Deep-Learning-based-SISR)
+<table>
+  <tr>
+    <td>Model 1</td>
+     <td>Model 2</td>
+  </tr>
+  <tr>
+    <td valign="top"><img src="./images/uncer_perceptual_model1.png"></td>
+    <td valign="top"><img src="./images/uncer_perceptual_model2.png"></td>
+  </tr>
+    <tr>
+    <td>Model 3</td>
+     <td>Model 4</td>
+  </tr>
+  <tr>
+    <td valign="top"><img src="./images/uncer_perceptual_model1.png"></td>
+    <td valign="top"><img src="./images/uncer_perceptual_model2.png"></td>
+  </tr>
+ </table>
+ 
+Warning map is a binary map (0/1) with threshold  = 0.19. Black indicates ‘safe’ pixels , and red indicates ‘risky’ pixels. 
 
-- Uncertainty estimation for each neural network model can give us further understanding of the model such as the robustness of the model. Generated uncertainty maps and warning maps can be found [here](https://github.com/junnjun/Uncertainty-Estimation-for-Deep-Learning-based-SISR)
+
 
 
 
