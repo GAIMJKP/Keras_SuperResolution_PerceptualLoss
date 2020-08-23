@@ -55,7 +55,7 @@ optional arguments:
 ```shellscript
 usage: evaluate.py [-h] [--upscale_factor UPSCALE_FACTOR] [--mode MODE] [--loss LOSS] [--LR_input_size LR_INPUT_SIZE]
                    [--test_data_dir TEST_DATA_DIR] [--HR_folder HR_FOLDER] [--LR_folder LR_FOLDER]
-                   [--load_weight_dir SAVE_WEIGHT_DIR] [--save_result_dir SAVE_RESULT_DIR] 
+                   [--load_weight_dir LOAD_WEIGHT_DIR] [--save_result_dir SAVE_RESULT_DIR] 
   
 optional arguments:
 -h, --help                 for more help on parameters 
