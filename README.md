@@ -161,8 +161,8 @@ More details of uncertainty maps and warning map can be found [here](https://git
      <td>Model 4</td>
   </tr>
   <tr>
-    <td valign="top"><img src="./images/uncer_perceptual_model1.png"></td>
-    <td valign="top"><img src="./images/uncer_perceptual_model2.png"></td>
+    <td valign="top"><img src="./images/uncer_perceptual_model3.png"></td>
+    <td valign="top"><img src="./images/uncer_perceptual_model4.png"></td>
   </tr>
  </table>
  
