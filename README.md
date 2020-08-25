@@ -167,6 +167,16 @@ More details of uncertainty maps and warning map can be found [here](https://git
  
 Warning map is a binary map (0/1) with threshold  = 0.19. Black indicates ‘safe’ pixels , and red indicates ‘risky’ pixels. 
 
+## Discussion
+- A network optimized with perceptual loss acquires better perceptual quality even though it gives lower PSNR and SSIM ratio compared to the network that is optimized using MSE loss. This is in line with <i> " the goal of these experiments is not to achieve state-of-the-art PSNR or SSIM results, but instead to showcase the qualitative difference between models trained with per-pixel and feature reconstruction losses."</i> from the paper.
++ The following equation shows that higher PSNR value can be achieved by lowering the MSE loss:
+<img> <img src="https://cdn.mathpix.com/snip/images/pCsrAydomg5QIkWnwmhzhuPMc7hjmPY1Jfd8_-wDX70.original.fullsize.png" /> So naturally the
+network optimized with MSE loss will focus on achieving higher PSNR values. PSNR relies on low-level differences between the pixels and does not necessarily correspond to the perceptual quality of the image.
+
+- Transposed convolution is more likely to generate checkerboard artifacts. Results show that nearest neighbor interpolation can be a solution for the checkerboard artifact problem in this case.
+
+- Nearest neighbor interpolation as an upscaling method instead of transposed convolution which is proposed by the original paper, it was able to handle the checkerboard artifact problem. 
+
 
 
 
